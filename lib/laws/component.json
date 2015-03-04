@@ -1,0 +1,19 @@
+{
+  "name": "laws",
+  "description": "Collection of laws",
+  "dependencies": {
+    "component/emitter": "1.1.3"
+  },
+  "locals": [
+    "citizen",
+    "request",
+    "render",
+    "stateful",
+    "debug"
+  ],
+  "scripts": [
+    "laws.js",
+    "proto.js"
+  ],
+  "main": "laws.js"
+}

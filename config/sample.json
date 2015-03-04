@@ -4,35 +4,34 @@
   "privatePort": 3000,
   "publicPort": 3000,
   "mongoUrl": "mongodb://localhost/DemocracyOS-dev",
-  "client": [ "protocol", "host", "publicPort", "env" ],
+  "cors domains": [],
+  "authPages": {
+      "signinUrl": "",
+      "signupUrl": ""
+    },
+  "client": [
+    "protocol",
+    "host",
+    "publicPort",
+    "env",
+    "logo",
+    "favicon",
+    "organization name",
+    "organization url",
+    "learn more url",
+    "google analytics tracking id",
+    "comments per page",
+    "faq",
+    "tos",
+    "pp",
+    "glossary",
+    "authPages",
+    "client debug"
+  ],
   "auth": {
-    "facebook": {
-      "clientID" : "FBClientId",
-      "clientSecret": "FBClientSecret",
-      "callback": "http://localhost:3005/auth/facebook/callback"
-    },
-    "twitter": {
-      "consumerKey" : "TwitterConsumerKey",
-      "consumerSecret": "TwitterConsumerSecret",
-      "callback": "http://127.0.0.1:3005/auth/twitter/callback"
-    },
     "basic": {
-      "username" : "",
+      "username": "",
       "password": ""
-    }
-  },
-  "mailer": {
-    "service": "Gmail",
-    "auth": {
-      "user": "example@gmail.com",
-      "pass": "yourExamplePassword123"
-    }
-  },
-  "mandrillMailer": {
-    "key": "api-key-provided-by-mandrill-something-like-klomFRs7MWASlosCa2q6Y",
-    "from" : {
-      "name": "DemocracyOS",
-      "email": "info@democraciaenred.org"
     }
   },
   "socialshare" : {
@@ -43,5 +42,34 @@
     "twitter" : {
       "username" : "@democracyos"
     }
-  }
+  },
+  "locale" : "en",
+  "logo": "/lib/boot/images/logo.png",
+  "favicon" : " http://democracyos-demo.s3.amazonaws.com/logo.png",
+  "organization name" : "DemocracyOS on GitHub",
+  "organization url" : "https://github.com/DemocracyOS/app",
+  "learn more url": "http://www.democracyos.org",
+  "staff": [],
+  "google analytics tracking id" : "",
+  "rss enabled" : true,
+  "comments per page": 0,
+  "spam limit": 5,
+  "faq": false,
+  "tos": false,
+  "pp": false,
+  "glossary": false,
+  "notifications": {
+    "url": "http://localhost:9001/api/events",
+    "token": 1234
+  },
+  "secret": "Just a sample secret string",
+  "ssl": {
+    "serverKey": "server.key",
+    "serverCert": "server.crt",
+    "port": 443,
+    "redirect": "normal"
+  },
+  "multicore": false,
+  "client debug": false,
+  "googleAPIKey": ""
 }

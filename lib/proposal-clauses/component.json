@@ -1,0 +1,19 @@
+{
+  "name": "proposal-clauses",
+  "description": "proposal's clauses view",
+  "dependencies": {
+    "component/t": "1.0.0",
+    "jadejs/jade": "1.1.5"
+  },
+  "locals": [
+    "config",
+    "citizen",
+    "side-comments",
+    "request",
+    "stateful-view",
+    "debug"
+  ],
+  "scripts": [ "proposal-clauses.js" ],
+  "templates": [ "template.jade" ],
+  "main": "proposal-clauses.js"
+}

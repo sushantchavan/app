@@ -16,6 +16,10 @@ node_modules
 
 components
 public
+ssl
+
+config*.json
 
 *.DS_Store
-config*.json
+.env
+.idea/*

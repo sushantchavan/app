@@ -2,21 +2,17 @@
   "name": "proposal-article",
   "description": "proposal's article view",
   "dependencies": {
-    "component/domify": "1.0.0",
-    "component/events": "*",
-    "component/classes": "*",
-    "component/tip": "*",
-    "component/aurora-tip": "*",
-    "component/truncate": "*",
-    "visionmedia/jade": "*",
-    "yields/empty": "*",
-    "cristiandouce/to-array": "*",
-    "cristiandouce/t": "chained-tokens"
+    "component/truncate": "72b55"
   },
-  "local": [ "config", "render" ],
+  "locals": [
+    "config",
+    "participants-box",
+    "citizen",
+    "proposal-clauses",
+    "view"
+  ],
   "scripts": [ "proposal-article.js" ],
-  "templates": [ "article.jade", "clause.jade" ],
-  "styles": [ ],
-  "images": [ ],
+  "templates": [ "template.jade" ],
+  "styles": [ "proposal-article.styl" ],
   "main": "proposal-article.js"
 }

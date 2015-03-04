@@ -2,120 +2,55 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var app = module.exports = require('lib/boot');
 var http = require('http');
+var https = require('https');
 var balance = require('lib/balance');
+var config = require('lib/config');
+var fs = require('fs');
+var log = require('debug')('democracyos:root');
+var multicore = config('multicore');
 
-/*
- * Create and expose app
- */
-
-var app = exports.app = express();
-
-/**
- * Create and expose server
- */
-
-var server = exports.server = http.createServer(app);
+var secure = 'https' == config('protocol');
 
 /**
- * Set `app` configure settings
+ * Configure standard server
  */
+var server = http.createServer(app);
+var port = config('privatePort');
 
-require('./config')(app)
-
-/*
- * Register Models and Launch Mongoose
- * with `app` configuration settings
- */
-
-require('lib/models')(app);
-
-// Each module has its own routes and views
-// receives app as parameter to sincronize
-// custom settings
-
-/*
- * PassportJS Auth Strategies and Routes
- */
-
-require('lib/auth')(app);
-
-/*
- * Twitter card and Facebook card routes
- */
-
-app.use('/twitter-card', require('lib/twitter-card'));
-app.use('/facebook-card', require('lib/facebook-card'));
-
-/*
- * Local signin routes
- */
-
-app.use('/signin', require('lib/signin'));
-
-/*
- * Local signup routes
- */
-
-app.use('/signup', require('lib/signup'));
-
-/*
- * Forgot password routes
- */
-
-app.use('/forgot', require('lib/forgot'));
 
 /**
- * Tag API Service
+ * Configure secure server (SSL) if necessary
  */
+var secureServer;
+var securePort;
+if (secure) {
+  var ssl = config('ssl');
 
-app.use('/api', require('lib/tag'));
+  var privateKey = fs.readFileSync(ssl.serverKey, 'utf-8');
+  var certificate = fs.readFileSync(ssl.serverCert, 'utf-8');
+
+  secureServer = https.createServer({ key: privateKey, cert: certificate }, app);
+  securePort = ssl.port;
+}
+
+var launch = function launchServer () {
+    server.listen(port, function() {
+      log('Application started on port %d', port);
+    });
+
+    if (secureServer && securePort) {
+      secureServer.listen(securePort, function() {
+        log('Secure application started on port %d', securePort);
+      });
+    }
+  };
 
 /**
- * Proposal API Service
- */
-
-app.use('/api', require('lib/proposal'));
-
-/**
- * Law API Service
- */
-
-app.use('/api', require('lib/law'));
-
-/**
- * Comment API Service
- */
-
-app.use('/api', require('lib/comment'));
-
-/**
- * Citizen API Service
- */
-
-app.use('/api', require('lib/citizen'));
-
-/**
- * Delegation API Service
- */
-
-app.use('/api', require('lib/delegation'));
-
-/**
- * Mount BootUp
- */
-
-app.use(require('lib/boot'));
-
-/*
- * Start Web server
+ * Launch the servers
  */
 
 if (module === require.main) {
-  balance(function() {
-    server.listen(app.get('port'), function() {
-      console.log('Application started on port %d', app.get('port'));
-    });
-  });
+  multicore ? balance(launch) : launch();
 }

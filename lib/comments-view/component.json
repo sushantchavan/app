@@ -2,23 +2,21 @@
   "name": "comments-view",
   "description": "Generic comments view component",
   "dependencies": {
-    "component/domify": "*",
-    "component/emitter": "*",
-    "component/events": "*",
-    "component/classes": "*",
-    "visionmedia/jade": "*",
-    "visionmedia/debug": "*",
-    "visionmedia/superagent": "*",
-    "yields/serialize": "*",
-    "discore/closest": "*",
-    "cristiandouce/t": "chained-tokens",
-    "cristiandouce/to-array": "*"
+    "component/dom": "1.0.6",
+    "component/t": "1.0.0",
+    "slifszyc/loading-lock": "0867923281013c00b503c4bc866e103fd5024105"
   },
-  "local": [
-    "citizen"
-  ],  
+  "locals": [
+    "citizen",
+    "config",
+    "comment-card",
+    "comments-filter",
+    "form-view",
+    "request",
+    "debug"
+  ],
   "scripts": [ "view.js" ],
-  "styles" : [ "comments.css" ],
-  "templates": [ "comments-block.jade", "comment-item.jade" ],
+  "styles": [ "styles.styl", "comments.styl" ],
+  "templates": [ "template.jade" ],
   "main": "view.js"
 }

@@ -2,27 +2,23 @@
   "name": "homepage",
   "description": "Homepage page",
   "dependencies": {
-    "component/classes": "*",
-    "component/bus": "*",
-    "visionmedia/debug": "*",
-    "visionmedia/superagent": "*",
-    "visionmedia/page.js": "*",
-    "yields/empty": "*"
+    "component/bus": "^0.0.2",
+    "component/dom": "0.7.1",
+    "visionmedia/page.js": "1.3.7",
+    "jadejs/jade": "1.1.5",
+    "component/t": "1.0.0"
   },
   "development": {},
-  "local": [
+  "locals": [
     "citizen",
-    "proposal-list",
-    "sidebar-list",
-    "proposal-article",
-    "proposal-options",
-    "comments-view"
+    "sidebar",
+    "render",
+    "debug"
   ],
   "scripts": [
     "homepage.js"
   ],
-  "styles": [
-    "main.css"
-  ],
+  "templates": [ "no-laws.jade" ],
+  "styles": [ "homepage.styl" ],
   "main": "homepage.js"
 }
