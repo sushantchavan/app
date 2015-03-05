@@ -22,6 +22,8 @@
     "render",
     "request",
     "regexps",
+    "richtext",
+    "toggle",
     "debug"
   ],
   "templates": [
